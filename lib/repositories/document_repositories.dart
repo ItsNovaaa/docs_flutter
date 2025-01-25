@@ -7,7 +7,7 @@ class ProductRepository {
 
   ProductRepository() : _apiService = ApiService();
 
-  Future<DocumentResponse> fetchProducts() async {
+  Future<DocumentResponse> fetchDocument() async {
     return _handleApiCall(() async {
       final response = await _apiService.getDocument();
       return DocumentResponse.fromJson(response.data);

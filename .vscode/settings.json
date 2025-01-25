@@ -1,3 +1,5 @@
 {
-    "aicursor.openaiApiKey": "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"
+    "aicursor.openaiApiKey": "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",
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "github.copilot.editor.enableAutoCompletions": false
 }

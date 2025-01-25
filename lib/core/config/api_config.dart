@@ -3,7 +3,9 @@ class ApiConfig {
   // static const String baseUrl = 'http://localhost:8000/api';
 
   // Api Endpoints
-    static const String documentEndpoint = '/ocr-teseracts';
+    // static const String documentEndpoint = '/ocr-teseracts';
+    static const String documentEndpoint = '/documents';
+    static const String loginEndpoint = '/auth/login';
     
   // Api Timeout
     static const int connectTimeout = 50000;

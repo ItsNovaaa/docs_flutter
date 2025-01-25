@@ -1,13 +1,23 @@
+import 'package:fllutter_learn/screens/login/login_screen.dart';
 import 'package:fllutter_learn/simple_bloc_observer.dart';
 import 'package:flutter/material.dart';
 import 'package:fllutter_learn/screens/document/document_pages.dart';
 import 'package:fllutter_learn/screens/setting_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fllutter_learn/blocs/bloc/login/login_bloc.dart';
+
 
 void main() {
   Bloc.observer = SimpleBlocObserver();
   runApp(
-    const MyApp(),
+    MultiBlocProvider(
+      providers: [
+        BlocProvider<LoginBloc>(
+          create: (context) => LoginBloc(),
+        ),
+      ],
+      child: MyApp(),
+    ),
   );
 }
 
@@ -19,14 +29,16 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      // home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home:LoginScreen(title: 'AI Doc Cloud'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
+  const MyHomePage({super.key,});
+  //  required this.title
+  // final String title;
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -50,9 +62,9 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('title'),
-      ),
+      // appBar: AppBar(
+      //   title: const Text('title'),
+      // ),
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
         onTap: _onItemTapped,

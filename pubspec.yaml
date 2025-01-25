@@ -39,6 +39,10 @@ dependencies:
   pretty_dio_logger: ^1.4.0
   dio: ^5.7.0
   equatable: ^2.0.5
+  http: ^0.13.4
+  shared_preferences: ^2.0.12
+  bloc: ^8.1.4
+  meta: ^1.15.0
 
 
 dev_dependencies:

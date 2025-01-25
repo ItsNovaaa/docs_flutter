@@ -1,19 +1,19 @@
 import 'package:dio/dio.dart';
 //import from exception
 import 'package:fllutter_learn/core/network/exeption/api_exeption.dart';
-
+//call shared_preference
+import 'package:fllutter_learn/core/shared_preference/shared_preference.dart';
 class ApiInterceptor extends Interceptor {
   @override
-  void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    // Add auth token if available
-    // final token = getToken(); // Implement your token retrieval logic
-    // if (token != null) {
-    //   options.headers['Authorization'] = 'Bearer $token';
-    // }
-
-    return handler.next(options);
+void onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
+    // Retrieve token
+    final token = await TokenManager.getToken();    
+    if (token != null) {
+      options.headers['Authorization'] = 'Bearer $token';
+    }
+    // Continue the request
+    handler.next(options);
   }
-
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
     // Handle successful responses

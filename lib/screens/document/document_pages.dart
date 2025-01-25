@@ -21,7 +21,7 @@ class DocumentPages extends StatefulWidget {
             title: const Text('Document'),
           ),
           body: FutureBuilder<DocumentResponse>(
-            future: _productRepository.fetchProducts(),
+            future: _productRepository.fetchDocument(),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return const Center(child: CircularProgressIndicator());
