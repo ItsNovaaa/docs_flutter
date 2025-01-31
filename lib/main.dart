@@ -1,3 +1,4 @@
+import 'package:fllutter_learn/core/network/dio_client.dart';
 import 'package:fllutter_learn/screens/login/login_screen.dart';
 import 'package:fllutter_learn/simple_bloc_observer.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,7 @@ void main() {
     MultiBlocProvider(
       providers: [
         BlocProvider<LoginBloc>(
-          create: (context) => LoginBloc(),
+          create: (context) => LoginBloc(DioClient()),
         ),
       ],
       child: MyApp(),

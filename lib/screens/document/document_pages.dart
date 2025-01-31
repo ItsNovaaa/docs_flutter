@@ -33,10 +33,12 @@ class DocumentPages extends StatefulWidget {
                   itemCount: document,
                   itemBuilder: (context, index) {
                     final document = snapshot.data!.data![index];
-                    return DocumentItem(
+                    final prefixUrl = '10.0.2.2:8000/storage/';
+                  final imageUrl = document.image != null ? prefixUrl + document.image! : null;
+                    return ExpandablePanel(
                       title: document.title ?? 'No title',
                       text: document.text ?? 'No extracted text',
-                      image: document.image ?? 'No image',
+                      image: imageUrl ?? 'No image',
                     );
                   },
                 );
@@ -49,4 +51,6 @@ class DocumentPages extends StatefulWidget {
       }
 }
 
-
+    //     );
+    //     }
+    // }

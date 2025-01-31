@@ -2,17 +2,21 @@ import 'package:dio/dio.dart';
 //import from exception
 import 'package:fllutter_learn/core/network/exeption/api_exeption.dart';
 //call shared_preference
+// import 'package:shared_preferences/shared_preferences.dart';
+
 import 'package:fllutter_learn/core/shared_preference/shared_preference.dart';
 class ApiInterceptor extends Interceptor {
   @override
-void onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
+  void onRequest(
+      RequestOptions options, RequestInterceptorHandler handler) async {
     // Retrieve token
-    final token = await TokenManager.getToken();    
+    final token = await TokenManager.getToken();
     if (token != null) {
       options.headers['Authorization'] = 'Bearer $token';
-    }
-    // Continue the request
+    } 
     handler.next(options);
+  }
+
   }
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
@@ -33,6 +37,9 @@ void onRequest(RequestOptions options, RequestInterceptorHandler handler) async 
         switch (err.response?.statusCode) {
           case 400:
             err = BadRequestException(err.requestOptions);
+            break;
+          case 422:
+            err = UnprocessableEntityException(err.requestOptions);
             break;
           case 401:
             err = UnauthorizedException(err.requestOptions);
@@ -58,4 +65,3 @@ void onRequest(RequestOptions options, RequestInterceptorHandler handler) async 
     }
     return handler.next(err);
   }
-}

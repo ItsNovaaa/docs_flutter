@@ -5,7 +5,7 @@ class ApiConfig {
   // Api Endpoints
     // static const String documentEndpoint = '/ocr-teseracts';
     static const String documentEndpoint = '/documents';
-    static const String loginEndpoint = '/auth/login';
+    static const String loginEndpoint = '/login';
     
   // Api Timeout
     static const int connectTimeout = 50000;

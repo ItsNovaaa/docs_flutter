@@ -19,6 +19,7 @@ class DioClient {
         connectTimeout: const Duration(milliseconds: ApiConfig.connectTimeout),
         receiveTimeout: const Duration(milliseconds: ApiConfig.receiveTimeout),
         headers: ApiConfig.headers,
+        
       ),
     );
 

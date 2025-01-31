@@ -9,6 +9,15 @@ class ApiException extends DioException {
   }
 }
 
+class UnprocessableEntityException extends ApiException {
+  UnprocessableEntityException(super.r);
+
+  @override
+  String toString() {
+    return 'Unprocessable entity';
+  }
+}
+
 class BadRequestException extends ApiException {
   BadRequestException(super.r);
 
