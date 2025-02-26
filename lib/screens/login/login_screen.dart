@@ -2,6 +2,7 @@ import 'package:fllutter_learn/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fllutter_learn/blocs/bloc/login/login_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key, required this.title});
@@ -22,10 +23,12 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: Colors.white,
         title: Text(widget.title),
       ),
       body: Padding(
+        
+        // backgroundColor: Colors.white,
         padding: const EdgeInsets.all(8.0),
         child: BlocBuilder<LoginBloc, LoginState>(
           builder: (context, state) {
@@ -44,15 +47,29 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: CircularProgressIndicator(),
               );
             }
-            return Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                //add email input field
+            return Container(
+              color: Colors.white,
+                padding: const EdgeInsets.all(8.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                Text(
+                  'Silahkan Login Dengan Email Dan Password',
+                  style: GoogleFonts.ibmPlexSans(
+                    textStyle: TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                SizedBox(height: 8),
+
                 TextField(
                   controller: _emailController,
                   decoration: InputDecoration(
                     hintText: 'Email',
-                    border: OutlineInputBorder(),
+                    border: const OutlineInputBorder(),
                     errorText: _emailError,
                   ),
                 ),
@@ -60,7 +77,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 //add password input field
                 TextField(
                   controller: _passwordController,
-                  obscureText: true,
                   decoration: InputDecoration(
                     hintText: 'Password',
                     border: OutlineInputBorder(),
@@ -96,7 +112,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ],
                 ),
-              ],
+                ],
+              ),
             );
           },
         ),

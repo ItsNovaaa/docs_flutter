@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 class ExpandablePanel extends StatefulWidget {
   final String title;
   final String text;
-  final String image;
+  // final String image;
 
   const ExpandablePanel({
     required this.title,
     required this.text,
-    required this.image,
+    // required this.image,
     Key? key,
   }) : super(key: key);
 
@@ -43,8 +43,8 @@ class _ExpandablePanelState extends State<ExpandablePanel> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  if (widget.image.isNotEmpty)
-                    Image.network(widget.image),
+                  // if (widget.image.isNotEmpty)
+                  //   Image.network(widget.image),
                   const SizedBox(height: 10),
                   Text(widget.text),
                 ],

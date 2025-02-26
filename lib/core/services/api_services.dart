@@ -8,9 +8,14 @@ class ApiService {
 
   ApiService() : _dioClient = DioClient();
 
-  Future<Response> getDocument() async {
+  Future<Response> getDocument({
+    Map<String, dynamic>? queryParameters,
+    Options? options,
+    CancelToken? cancelToken,
+    ProgressCallback? onReceiveProgress,
+  }) async {
     try {
-      final response = await _dioClient.get(ApiConfig.documentEndpoint);
+      final response = await _dioClient.get(ApiConfig.documentEndpoint, queryParameters: queryParameters);
       return response;
     } on DioException {
       rethrow;

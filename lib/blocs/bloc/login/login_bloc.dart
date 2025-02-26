@@ -54,6 +54,12 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         }
         // emit(LoginFailure(error: 'Failed to login'));
       }
+    }
+    );
+
+    on<DeleteToken>((event, emit) async {
+      await TokenManager.deleteToken();
+      emit(LoginInitial());
     });
   }
 }

@@ -20,3 +20,5 @@ class LoginButtonPressed extends LoginEvent {
   @override
   List<Object> get props => [email, password];
 }
+
+class DeleteToken extends LoginEvent {} // New event for token deletion

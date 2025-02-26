@@ -11,7 +11,7 @@ String DocumentResponseToJson(DocumentResponse data) =>
     json.encode(data.toJson());
 
 class DocumentResponse {
-  List<Datum>? data;
+  List<Document>? data;
   Links? links;
   Meta? meta;
 
@@ -25,7 +25,7 @@ class DocumentResponse {
       DocumentResponse(
         data: json["data"] == null
             ? []
-            : List<Datum>.from(json["data"]!.map((x) => Datum.fromJson(x))),
+            : List<Document>.from(json["data"]!.map((x) => Document.fromJson(x))),
         links: json["links"] == null ? null : Links.fromJson(json["links"]),
         meta: json["meta"] == null ? null : Meta.fromJson(json["meta"]),
       );
@@ -39,14 +39,14 @@ class DocumentResponse {
       };
 }
 
-class Datum {
+class Document {
   int? id;
   String? image;
   String? text;
     String? title;
   String? status;
 
-  Datum({
+  Document({
     this.id,
     this.image,
     this.text,
@@ -54,7 +54,7 @@ class Datum {
     this.status
   });
 
-  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+  factory Document.fromJson(Map<String, dynamic> json) => Document(
         id: json["id"],
         image: json["image"],
         text: json["text"],

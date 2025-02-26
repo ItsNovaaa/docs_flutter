@@ -1,15 +1,21 @@
+import 'package:dio/dio.dart';
 import 'package:fllutter_learn/core/network/exeption/api_exeption.dart';
 import 'package:fllutter_learn/core/services/api_services.dart';
 import 'package:fllutter_learn/model/document_response.dart';
 
-class ProductRepository {
+class DocumentRepositories {
   final ApiService _apiService;
 
-  ProductRepository() : _apiService = ApiService();
+  DocumentRepositories() : _apiService = ApiService();
 
-  Future<DocumentResponse> fetchDocument() async {
+  Future<DocumentResponse> fetchDocument({
+    Map<String, dynamic>? queryParameters,
+    Options? options,
+    CancelToken? cancelToken,
+    ProgressCallback? onReceiveProgress,
+  }) async {
     return _handleApiCall(() async {
-      final response = await _apiService.getDocument();
+      final response = await _apiService.getDocument(queryParameters: queryParameters);
       return DocumentResponse.fromJson(response.data);
     });
   }
